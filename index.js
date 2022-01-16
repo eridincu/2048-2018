@@ -41,6 +41,8 @@ const redis = require("redis");
   const server = http.Server(app);
   const io = socketio(server); // Attach socket.io to our server
 
+  server.listen(8080, () => console.log("Server started"));
+
   var OBJECT = Object.prototype;
   OBJECT.rhash = {};
   OBJECT.rset = function (id, object) {
