@@ -63,14 +63,16 @@ const redis = require("redis");
     let playerIndex = -1;
     let lobbyId = -1;
     console.log("socket created");
-    var client_length = await client.lLen("lobbies");
+    let all_clients = await client.hGetAll("lobbies");
+    console.log('all clients:', all_clients)
+    let client_length = await client.lLen("lobbies");
     console.log("client_length:", client_length);
     if (client_length === 0) {
       console.log("no games available.");
       id = uid();
       lobbyId = id;
       playerIndex = 1;
-      console.log("Player ${playerIndex} has connected");
+      console.log("Player", playerIndex, "has connected");
       console.log("socket id:", socket.id);
       sockets[socket.id] = socket;
       await client.hSet(
