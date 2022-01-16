@@ -53,9 +53,15 @@ window.requestAnimationFrame(function () {
   
   remoteGame = new GameManager(socket, true, 4, KeyboardInputManager, HTMLActuator, LocalStorageManager);
   localGame = new GameManager(socket, false, 4, KeyboardInputManager, HTMLActuator, LocalStorageManager);
-  
+
   // Add this socket lisetner
-  socket.on('player-number', function (playerNumber) {
+  socket.on('player-number', function (data) {
+    console.log(data)
+    const playerNumber = data.number
+    const lobbyId = data.lobby_id
+
+    remoteGame.lobbyId = lobbyId
+    localGame.lobbyId = lobbyId
     if (playerNumber == 1) {
       waitingPlayerTwo(true); // Show waiting message
       

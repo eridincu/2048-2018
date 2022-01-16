@@ -16,16 +16,20 @@ class GameManager {
     // Add these two lines
     this.remotePlayer = remotePlayer;
     this.socket = socket;
-
+    
     // Add this new if statement
     if (this.remotePlayer) {
+      this.socket.on('end', this.disconnectFromServer.bind(this));
       this.socket.on('move', this.handleRemoteMove.bind(this));
     }
   }
   
+  disconnectFromServer() {
+    this.socket.disconnect()
+  }
   sendRemoteMove(grid, metadata) {
     if (!this.remotePlayer) {
-      this.socket.emit('actuate', { grid: grid, metadata: metadata });
+      this.socket.emit('actuate', { grid: grid, metadata: metadata, lobbyId: this.lobbyId });
     }
   }
   
@@ -34,7 +38,7 @@ class GameManager {
     var metadata = data.metadata;
     this.actuator.actuate(grid, metadata);
   }
-
+  
   actuate() {
     if (this.storageManager.getBestScore() < this.score) {
       this.storageManager.setBestScore(this.score);
