@@ -41,10 +41,6 @@ const redis = require("redis");
   const server = http.Server(app);
   const io = socketio(server); // Attach socket.io to our server
 
-  app.use(express.static("public")); // Serve our static assets from /public
-
-  server.listen(3000, () => console.log("Server started"));
-
   var OBJECT = Object.prototype;
   OBJECT.rhash = {};
   OBJECT.rset = function (id, object) {
