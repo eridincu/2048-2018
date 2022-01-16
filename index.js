@@ -33,7 +33,7 @@
  });
  
  client.connect()
- client.hSet("lobbies", 'test', 'test_data')
+//  client.hSet("lobbies", 'test', 'test_data')
  const sockets = {}
  
  const app = express();
