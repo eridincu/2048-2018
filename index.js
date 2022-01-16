@@ -31,8 +31,8 @@
  client.on('error', function (err) {
    console.log('Redis client error: ' + err);
  });
- 
- client.connect()
+
+ console.log('after connect')
 //  client.hSet("lobbies", 'test', 'test_data')
  const sockets = {}
  
