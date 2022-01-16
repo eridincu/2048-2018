@@ -40,8 +40,8 @@ const redis = require("redis");
   const app = express();
   const server = http.Server(app);
   const io = socketio(server); // Attach socket.io to our server
-
-  server.listen(8080, () => console.log("Server started"));
+  const port = process.env.PORT || 8080
+  server.listen(port, () => console.log("Server started"));
 
   var OBJECT = Object.prototype;
   OBJECT.rhash = {};
