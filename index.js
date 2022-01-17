@@ -29,7 +29,6 @@ const redis = require("redis");
   console.log(REDISPORT)
   
   const client = redis.createClient(REDISPORT, REDISHOST);
-  console.log('info:', info)
   client.on("connect", function () {
     console.log("Redis client connected.");
     client.select(0)
