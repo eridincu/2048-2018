@@ -22,7 +22,12 @@ const http = require("http");
 const redis = require("redis");
 
 (async () => {
-  const client = redis.createClient("10.177.180.195", 6379);
+  const redisConf = {
+    host: "10.177.180.195",
+    port: '6379',
+    pass: ''
+  }
+  const client = redis.createClient(redisConf);
 
   client.on("connect", function () {
     console.log("Redis client connected.");
