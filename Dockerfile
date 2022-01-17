@@ -9,7 +9,7 @@ COPY package*.json ./
 RUN npm install
 # If you are building your code for production
 # RUN npm ci --only=production
-RUN sud apt install redis
+RUN sudo apt install redis
 # Bundle app source
 COPY . .
 EXPOSE 8080
