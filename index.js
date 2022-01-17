@@ -19,11 +19,11 @@
 const express = require("express");
 const socketio = require("socket.io");
 const http = require("http");
-const {redis} = require("@google-cloud/redis");
+const {CloudRedisClient} = require("@google-cloud/redis");
 
 
 (async () => {
-  const cloudRedis = new redis()
+  const cloudRedis = new CloudRedisClient()
   const formattedParent = cloudRedis.locationPath('western-creek-338514', 'europe-west-1');
   const request = {
     parent: formattedParent,
