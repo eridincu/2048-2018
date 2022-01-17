@@ -12,6 +12,7 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
+    "@google-cloud/redis": "^2.4.0",
     "body-parser": "latest",
     "express": "latest",
     "redis": "^4.0.1",
