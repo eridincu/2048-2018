@@ -19,7 +19,7 @@
 const express = require("express");
 const socketio = require("socket.io");
 const http = require("http");
-const redis = require("@google-cloud/redis");
+const {redis} = require("@google-cloud/redis");
 
 
 (async () => {
