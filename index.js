@@ -24,10 +24,13 @@ const redis = require("redis");
 (async () => {
   const REDISHOST = process.env.REDISHOST || '10.88.41.68';
   const REDISPORT = process.env.REDISPORT || 6379;
+  
   console.log(REDISHOST)
   console.log(REDISPORT)
+  
   const client = redis.createClient(REDISPORT, REDISHOST);
-
+  const info = await client.info()
+  console.log('info:', info)
   client.on("connect", function () {
     console.log("Redis client connected.");
     client.select(0)
