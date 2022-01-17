@@ -19,17 +19,17 @@
 const express = require("express");
 const socketio = require("socket.io");
 const http = require("http");
-const {CloudRedisClient} = require("@google-cloud/redis");
+const redis = require("redis");
 
+const REDISHOST = process.env.REDISHOST || '10.88.41.68';
+const REDISPORT = process.env.REDISPORT || '6379';
 
+console.log(REDISHOST);
+console.log(REDISPORT);
+
+const client = redis.createClient({host: REDISPORT, port: REDISHOST});
 (async () => {
-  const cloudRedis = new CloudRedisClient()
-  const formattedParent = cloudRedis.locationPath('western-creek-338514', 'europe-west1');
-  const request = {
-    parent: formattedParent,
-  };
-  const client = (await cloudRedis.listInstances(request))[0];
-  console.log('clients:', client)
+  
   client.on("connect", function () {
     console.log("Redis client connected.");
     client.select(0)
