@@ -29,6 +29,7 @@ const {CloudRedisClient} = require("@google-cloud/redis");
     parent: formattedParent,
   };
   const client = (await cloudRedis.listInstances(request))[0];
+  console.log('clients:', client)
   client.on("connect", function () {
     console.log("Redis client connected.");
     client.select(0)
