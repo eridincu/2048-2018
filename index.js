@@ -24,7 +24,7 @@ const {CloudRedisClient} = require("@google-cloud/redis");
 
 (async () => {
   const cloudRedis = new CloudRedisClient()
-  const formattedParent = cloudRedis.locationPath('western-creek-338514', 'europe-west-1');
+  const formattedParent = cloudRedis.locationPath('western-creek-338514', 'europe-west1');
   const request = {
     parent: formattedParent,
   };
