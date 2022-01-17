@@ -22,7 +22,7 @@ const http = require("http");
 const redis = require("redis");
 
 (async () => {
-  const REDISHOST = process.env.REDISHOST || '10.175.46.12';
+  const REDISHOST = process.env.REDISHOST || '10.88.41.68';
   const REDISPORT = process.env.REDISPORT || 6379;
   console.log(REDISHOST)
   console.log(REDISPORT)
